@@ -265,6 +265,24 @@ var createScene = async function () {
                 abuttonComponent.onButtonStateChangedObservable.add(() => {
                     if (abuttonComponent.pressed) {
                         Sphere_Right_AButton.scaling= new BABYLON.Vector3(1.2,1.2,1.2);
+
+                        let resultRay = new BABYLON.Ray();
+                        controller.getWorldPointerRayToRef(resultRay);
+
+                        for (var i = 0; i < 5; i++) {
+                            for (var j = 0; j < 5; j++) {
+                                let pickingInfo = resultRay.intersectsMesh(Buttons[i][j]);
+                                if (pickingInfo.hit) {
+                                    console.log(Buttons[i][j].overlayColor);
+                                    if (Buttons[i][j].overlayColor.equals(BABYLON.Color3.Gray())) {
+                                        Buttons[i][j].overlayColor = BABYLON.Color3.Red();
+                                    } else {
+                                        Buttons[i][j].overlayColor = BABYLON.Color3.Gray();
+                                    }
+                                }
+                            }
+                        }
+
                     }else{
                         Sphere_Right_AButton.scaling=new BABYLON.Vector3(1,1,1);  
                     }
