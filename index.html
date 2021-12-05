@@ -239,10 +239,14 @@ var createScene = async function () {
                 let squeezeComponent = motionController.getComponent(xr_ids[1]);//xr-standard-squeeze
                 squeezeComponent.onButtonStateChangedObservable.add(() => {
                     if (squeezeComponent.pressed) {
+                        console.log("?");
                         Box_Right_Squeeze.scaling= new BABYLON.Vector3(1.2,1.2,1.2);
+                        console.log("!");
 
                         let resultRay = new BABYLON.Ray();
+                        console.log("~");
                         controller.getWorldPointerRayToRef(resultRay);
+                        console.log("asljdfk");
                         console.log(resultRay);
 
                         for (var i = 0; i < 5; i++) {
