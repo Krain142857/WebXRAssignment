@@ -99,6 +99,15 @@ var createScene = async function () {
     var Box_Right_ThumbStick = BABYLON.MeshBuilder.CreateBox("Box_Right_ThumbStick",{size:0.5},scene);
     Box_Right_ThumbStick.position = new BABYLON.Vector3(1,0,1);
 
+    var Buttons = new Array();
+    for (var i = 0; i < 5; i++) {
+        Buttons[i] = new Array(); 
+        for (var j = 0; j < 5; j++) {
+            Buttons[i][j] = BABYLON.MeshBuilder.CreateBox("Button_i_j", {size:0.5}, scene);
+            Buttons[i][j].position = new BABYLON.Vector3(i - 2, j - 2, 5);
+        }        
+    }
+
     var xr = await scene.createDefaultXRExperienceAsync({
       //  xrInput: defaultXRExperience.input,
   //      floorMeshes: [environment.ground] /* Array of meshes to be used as landing points */
